@@ -1,6 +1,6 @@
 # color-scheme-generator
 
-### Project Walk-through:
+## Project Walk-through:
 
 * Choose a seed color
 * Choose a color scheme mode in a <select> box
