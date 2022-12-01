@@ -21,7 +21,7 @@ h1{
 #scheme-generator{
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 60%;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
@@ -41,4 +41,11 @@ form > select, button{
 input{
     width: 10rem;
     height:2.2rem;
+}
+#returned-colors{
+    margin-top: 2rem;;
+    display: flex;
+}
+.color-scheme{
+    height:15rem;
 }
