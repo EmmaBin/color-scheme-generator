@@ -22,57 +22,33 @@ schemeForm.addEventListener('submit', function(e){
     e.preventDefault()
     const seedValue = seed.value.slice(1)
     const modeValue = mode.value
-    
-
-    fetch(`https://www.thecolorapi.com/scheme?hex=${seedValue}&mode=${modeValue}&count=5`)
-    .then(res => res.json())
-    .then(data => {
-        console.log(data)
-        for (let color of data.colors){
-            colorArray.push(color)
-        }
-        renderColors()
-        colorArray=[]
-        
-        document.querySelectorAll('.hex-value').forEach((color)=> {
-            color.addEventListener('click',function(e){
-                let copyText = e.target.id;
-                navigator.clipboard.writeText(copyText).then(() => {
-                    alert("Copied to clipboard");
-                });
-            })
-
-        })
-
-         
-        
-
-    })
+    generateScheme(seedValue, modeValue)
 
 })
 
 
 window.onload = (event) =>{
-    console.log('loaded')
-    fetch(`https://www.thecolorapi.com/scheme?hex=000000&mode=monochrome&count=5`)
-    .then(res => res.json())
-    .then(data=>{
-        for (let color of data.colors){
-            colorArray.push(color)
-        }
-        renderColors()
-        colorArray=[]
-        
-        document.querySelectorAll('.hex-value').forEach((color)=> {
-            color.addEventListener('click',function(e){
-                let copyText = e.target.id;
-                navigator.clipboard.writeText(copyText).then(() => {
-                    alert("Copied to clipboard");
-                });
+    generateScheme('000000', 'monochrome')
+    
+}
+
+function generateScheme(seedValue, modeValue){
+    fetch(`https://www.thecolorapi.com/scheme?hex=${seedValue}&mode=${modeValue}&count=5`)
+        .then(res => res.json())
+        .then(data => {
+            for (let color of data.colors) {
+                colorArray.push(color)
+            }
+            renderColors()
+            colorArray = []
+
+            document.querySelectorAll('.hex-value').forEach((color) => {
+                color.addEventListener('click', function (e) {
+                    let copyText = e.target.id;
+                    navigator.clipboard.writeText(copyText).then(() => {
+                        alert("Copied to clipboard");
+                    });
+                })
             })
-
         })
-
-    })
-
 }
