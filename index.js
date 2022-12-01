@@ -27,6 +27,7 @@ schemeForm.addEventListener('submit', function(e){
     fetch(`https://www.thecolorapi.com/scheme?hex=${seedValue}&mode=${modeValue}&count=5`)
     .then(res => res.json())
     .then(data => {
+        console.log(data)
         for (let color of data.colors){
             colorArray.push(color)
         }
@@ -38,7 +39,6 @@ schemeForm.addEventListener('submit', function(e){
                 let copyText = e.target.id;
                 navigator.clipboard.writeText(copyText).then(() => {
                     alert("Copied to clipboard");
-                    console.log(copyText)
                 });
             })
 
@@ -52,3 +52,27 @@ schemeForm.addEventListener('submit', function(e){
 })
 
 
+window.onload = (event) =>{
+    console.log('loaded')
+    fetch(`https://www.thecolorapi.com/scheme?hex=000000&mode=monochrome&count=5`)
+    .then(res => res.json())
+    .then(data=>{
+        for (let color of data.colors){
+            colorArray.push(color)
+        }
+        renderColors()
+        colorArray=[]
+        
+        document.querySelectorAll('.hex-value').forEach((color)=> {
+            color.addEventListener('click',function(e){
+                let copyText = e.target.id;
+                navigator.clipboard.writeText(copyText).then(() => {
+                    alert("Copied to clipboard");
+                });
+            })
+
+        })
+
+    })
+
+}

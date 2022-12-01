@@ -16,7 +16,7 @@ h1{
     font-weight: 500;
     font-size: 3rem;
     text-align: center;
-    color:#111827;
+    color:#B97979;
 }
 #scheme-generator{
     display: flex;
@@ -48,7 +48,7 @@ input{
 }
 .color-scheme{
     height:30rem;
-    width:15rem;
+    width:100%;
 }
 .hex-value{
     text-align: center;
