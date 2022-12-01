@@ -47,5 +47,10 @@ input{
     display: flex;
 }
 .color-scheme{
-    height:15rem;
+    height:30rem;
+    width:15rem;
+}
+.hex-value{
+    text-align: center;
+    font-size: 1.6rem;
 }
